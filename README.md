@@ -9,7 +9,7 @@
 
 # Windows XP 像素字体
 
-[![Releases](https://img.shields.io/github/v/release/TakWolf/winxp-pixel-font)](https://github.com/TakWolf/winxp-pixel-font/releases)
+[![Releases](https://img.shields.io/github/v/release/pixel-font-legacy/winxp-pixel-font?style=flat-square)](https://github.com/pixel-font-legacy/winxp-pixel-font/releases)
 
 Windows XP 系统的点阵字体，提取自 Windows XP SP3 x86 官方镜像。
 
