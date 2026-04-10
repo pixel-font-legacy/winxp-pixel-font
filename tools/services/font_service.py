@@ -1,3 +1,4 @@
+import itertools
 from datetime import datetime
 
 from fontTools.ttLib import TTFont
@@ -110,22 +111,26 @@ def dump_fonts(font_formats: list[FontFormat]) -> list[DumpLog]:
                             'components': components,
                         }
 
-                if '.notdef' not in glyph_infos:
-                    builder.glyphs.append(Glyph(
-                        name='.notdef',
-                        advance_width=builder.font_metric.font_size,
-                        advance_height=builder.font_metric.font_size,
-                    ))
-
                 glyph_names = set()
-                for code_point, glyph_name in sorted(tt_font.getBestCmap().items()):
-                    if glyph_name not in glyph_infos:
+                for code_point, glyph_name in sorted(itertools.chain([(-1, '.notdef')], tt_font.getBestCmap().items())):
+                    if glyph_name not in glyph_infos and glyph_name != '.notdef':
                         continue
-                    builder.character_mapping[code_point] = glyph_name
+
+                    if code_point != -1:
+                        builder.character_mapping[code_point] = glyph_name
 
                     if glyph_name in glyph_names:
                         continue
                     glyph_names.add(glyph_name)
+
+                    if glyph_name not in glyph_infos:
+                        assert glyph_name == '.notdef'
+                        builder.glyphs.append(Glyph(
+                            name='.notdef',
+                            advance_width=builder.font_metric.font_size,
+                            advance_height=builder.font_metric.font_size,
+                        ))
+                        continue
 
                     glyph_info = glyph_infos[glyph_name]
                     image_format = glyph_info['image_format']
