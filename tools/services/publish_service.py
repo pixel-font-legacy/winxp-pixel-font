@@ -35,9 +35,9 @@ def update_www(dump_logs: list[DumpLog]):
         path_to = path_from.copy_into(path_define.www_fonts_dir)
         logger.info("Copy file: '{}' -> '{}'", path_from, path_to)
 
-    dump_logs_file_path = path_define.www_fonts_dir.joinpath('db.js')
-    dump_logs_file_path.write_text(f'export default {json.dumps([dump_log.__dict__ for dump_log in dump_logs], indent=4, ensure_ascii=False)}\n', 'utf-8')
-    logger.info("Build: '{}'", dump_logs_file_path)
+    db_file_path = path_define.www_fonts_dir.joinpath('db.js')
+    db_file_path.write_text(f'export default {json.dumps([dump_log.__dict__ for dump_log in dump_logs], indent=4, ensure_ascii=False)}\n', 'utf-8')
+    logger.info("Build: '{}'", db_file_path)
 
     css_file_path = path_define.www_fonts_dir.joinpath('index.css')
     with css_file_path.open('w', encoding='utf-8') as file:
