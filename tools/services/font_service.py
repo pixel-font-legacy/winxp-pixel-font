@@ -5,7 +5,6 @@ from fontTools.ttLib import TTFont
 from fontTools.ttLib.tables.BitmapGlyphMetrics import SmallGlyphMetrics, BigGlyphMetrics
 from fontTools.ttLib.tables.E_B_D_T_ import table_E_B_D_T_, ebdt_bitmap_classes, ebdt_bitmap_format_5, ebdt_bitmap_format_8, ebdt_bitmap_format_9
 from fontTools.ttLib.tables.E_B_L_C_ import table_E_B_L_C_
-# noinspection PyProtectedMember
 from fontTools.ttLib.tables._n_a_m_e import table__n_a_m_e
 from loguru import logger
 from pixel_font_builder import FontBuilder, Glyph, opentype
