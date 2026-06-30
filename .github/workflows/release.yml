@@ -10,7 +10,7 @@ jobs:
       contents: write
     strategy:
       matrix:
-        font-format: [otf, otf.woff, otf.woff2, ttf, ttf.woff, ttf.woff2, bdf, pcf]
+        font-format: [otf, otf.woff, otf.woff2, ttf, ttf.woff, ttf.woff2, ms.bitmap.ttf, otb, dfont, bdf, pcf]
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
