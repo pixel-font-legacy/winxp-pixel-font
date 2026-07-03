@@ -1,6 +1,6 @@
 import json
 import shutil
-import zipfile
+from zipfile import ZipFile
 
 from loguru import logger
 
@@ -15,7 +15,7 @@ def make_release_zips(dump_logs: list[DumpLog], font_formats: list[FontFormat]):
 
     for font_format in font_formats:
         file_path = path_define.releases_dir.joinpath(f'winxp-pixel-font-{font_format}-v{configs.version}.zip')
-        with zipfile.ZipFile(file_path, 'w') as file:
+        with ZipFile(file_path, 'w') as file:
             file.write(path_define.project_root_dir.joinpath('LICENSE-FONT.md'), 'README.md')
             for dump_log in dump_logs:
                 for font_size in dump_log.font_sizes:
