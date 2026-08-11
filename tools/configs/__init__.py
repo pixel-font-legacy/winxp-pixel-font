@@ -2,7 +2,7 @@ from pixel_font_builder import SerifStyle, WidthStyle
 
 from tools.configs.dump import SubConfig, DumpConfig
 
-version = '2026.07.01'
+version = '2026.08.11'
 
 dump_configs = [
     DumpConfig(
