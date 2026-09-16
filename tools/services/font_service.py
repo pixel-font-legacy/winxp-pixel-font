@@ -1,4 +1,5 @@
 import itertools
+from collections.abc import Sequence
 from datetime import datetime
 
 from fontTools.ttLib import TTFont
@@ -30,7 +31,7 @@ class DumpLog:
         self.font_sizes = []
 
 
-def dump_fonts(font_formats: list[FontFormat]) -> list[DumpLog]:
+def dump_fonts(font_formats: Sequence[FontFormat]) -> list[DumpLog]:
     path_define.OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 
     dump_logs = []
